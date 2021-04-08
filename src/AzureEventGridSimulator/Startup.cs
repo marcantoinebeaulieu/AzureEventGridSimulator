@@ -62,9 +62,7 @@ namespace AzureEventGridSimulator
             app.UseSerilogRequestLogging(options => { options.GetLevel = (httpContext, elapsed, ex) => LogEventLevel.Debug; });
             app.UseEventGridMiddleware();
             app.UseRouting();
-            app.UseEndpoints(e => {
-                e.MapControllers();
-            });
+            app.UseEndpoints(e => { e.MapControllers(); });
         }
 
         private static async Task OnApplicationStarted(IApplicationBuilder app, IHostApplicationLifetime lifetime, ILogger logger)
